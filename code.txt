@@ -1,0 +1,41 @@
+create table Employee(
+    Emp_ID int primary key NOT NULL,
+    Last_Name Text NOT NULL,
+    First_Name Text NOT NULL,
+    Age int NOT NULL
+    );
+ insert into Employee values(1,'Hansen','Ola',30);
+ insert into Employee values(2,'Svendson','Tove',23);
+ insert into Employee values(3,'Pettersen','Kari',20);
+ insert into Employee values(4,'Priya','Jyothi',18);
+select*from Employee;
+
+
+
+CREATE TABLE Department (
+    Dep_ID int  NOT NULL,
+    Dep_Name Text NOT NULL,
+    Emp_ID int,
+    PRIMARY KEY (Dep_ID),
+   CONSTRAINT FK_EmpDep FOREIGN KEY (Emp_ID)
+    REFERENCES Employee(Emp_ID)
+   
+);
+
+insert into Department values(1,'CSE',3);
+insert into Department values(2,'Mech',2);
+insert into Department values(3,'EEE',8);
+
+select*from Department;
+
+
+
+ALTER TABLE Department
+ADD CONSTRAINT FK_EmpDep
+FOREIGN KEY (Emp_ID) REFERENCES Employee(Emp_ID);
+
+ALTER TABLE Department
+DROP FOREIGN KEY FK_EmpDep;
+
+desc Employee;
+desc Department;
